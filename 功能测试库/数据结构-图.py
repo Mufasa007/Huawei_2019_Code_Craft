@@ -57,3 +57,9 @@ if __name__ == "__main__":
     print(path2)
     path3 = find_shortest_path(graph, 'A', 'D', path=[])
     print(path3)
+
+'''
+['A', 'B', 'C', 'D']
+[['A', 'B', 'C', 'D'], ['A', 'B', 'D'], ['A', 'C', 'D']]
+['A', 'B', 'D']
+'''
