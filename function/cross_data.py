@@ -2,15 +2,7 @@
 def cross_data(cross):
     road_direction = {}
     for i in cross:
-        if i[1] not in road_direction.keys():
-            road_direction[i[1]] = 1
-        if i[2] not in road_direction.keys():
-            road_direction[i[2]] = 0
-        if i[3] not in road_direction.keys():
-            road_direction[i[3]] = 1
-        if i[4] not in road_direction.keys():
-            road_direction[i[4]] = 0
-        # print(road_direction)
+        road_direction[i[0]] = i[1:]
     return road_direction
 
 
@@ -21,5 +13,5 @@ if __name__ == "__main__":
     import read_txt,graph_data
     road = read_txt.read_txt(road_path)
     cross = read_txt.read_txt(cross_path)
-    road_direction = cross_data(cross)
-    print(road_direction)
+    data_cross = cross_data(cross)
+    print(data_cross)
