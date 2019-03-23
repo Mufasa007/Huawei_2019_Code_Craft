@@ -1,8 +1,6 @@
 **华为2019年软件精英挑战赛**  
 
 
-<div style="align: center"><img src="https://github.com/Mufasa007/Huawei_2019_Code_Craft/blob/master/source/face.JPG"/></div>
-
 <div align=center><img src ="https://github.com/Mufasa007/Huawei_2019_Code_Craft/blob/master/source/face.JPG"/></div>
 
 
