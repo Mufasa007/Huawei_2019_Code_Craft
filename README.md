@@ -2,7 +2,9 @@
 
 ![image](https://github.com/Mufasa007/Huawei_2019_Code_Craft/blob/master/source/face.JPG)  
 
- <div align="center">  ![image](https://github.com/Mufasa007/Huawei_2019_Code_Craft/blob/master/source/face.JPG)  </div> 
+ <div align="center">![image](https://github.com/Mufasa007/Huawei_2019_Code_Craft/blob/master/source/face.JPG)
+条件随机场模型示意图 </div>
+
 
 团队名称：按下去1个bug起来三个  
 团队口号：修bug就像打地鼠，一生二二生三三生万物无穷尽  
