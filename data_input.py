@@ -30,11 +30,11 @@ class data_input:
             data.append(data_mid)
         return data
 
-    # def dict_trans(self, data):  # 将原始的数据转换成字典，key为数据id，value为其值
-    #     dict = {}
-    #     for i in data:
-    #         dict[i[0]] = i[1:]
-    #     return dict
+    def dict_trans(self, data):  # 将原始的数据转换成字典，key为数据id，value为其值
+        dict = {}
+        for i in data:
+            dict[i[0]] = i[1:]
+        return dict
 
     def dict_cross(self, data):
         dict = {}  # key=id，value=index
@@ -46,7 +46,7 @@ class data_input:
         road = self.read_txt(self.path_road)  # 不需要，转成字典
         cross = self.read_txt(self.path_cross)  # 需要额外转换一个字典（key=id，value=index）
         car = self.read_txt(self.path_car)  # 不需要，转成字典
-
+        road = self.dict_trans(road)
         cross_dict = self.dict_cross(cross)
 
         return road, cross, cross_dict, car
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     dip = data_input(road_path, cross_path, car_path)
     data_road, data_cross, dict_cross, data_car = dip.main()
 
-    # print(data_road)
+    print(data_road)
     # print(data_cross)
     # print(data_car)
     # print(dict_cross)

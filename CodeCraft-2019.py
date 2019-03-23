@@ -1,11 +1,11 @@
-# version1.0
-# 使用dijstra最优路径算法
-# 处理的核心是cross节点，其他数据都是配角
-import time
+import logging
+import sys
 
-
-import data_input
-import numpy as np
+logging.basicConfig(level=logging.DEBUG,
+                    filename='../logs/CodeCraft-2019.log',
+                    format='[%(asctime)s] %(levelname)s [%(funcName)s: %(filename)s, %(lineno)d] %(message)s',
+                    datefmt='%Y-%m-%d %H:%M:%S',
+                    filemode='a')
 
 
 def priority_queue(data, d0):  # 自建优先队列格式
@@ -76,13 +76,72 @@ def dijstra_path(road, cross, dict, end):
         key = node
     return path
 
-def write_txt(data,path): # 按照特定格式写入txt文件
+
+def write_txt(data, path):  # 按照特定格式写入txt文件
     file = open(path, 'w')
     for i in data:
         file.write('(' + str(i)[1:-1] + ')\n')
     file.close()
 
-def main(road, cross, dict_cross, car):
+
+class data_input:
+    def __init__(self, path_road, path_cross, path_car):
+        self.path_road = path_road
+        self.path_cross = path_cross
+        self.path_car = path_car
+
+    def read_txt(self, path):  # txt文件读取
+        f = open(path)
+        txt = f.read().split('\n')
+        data = []
+        for i in txt[1:]:
+            data_mid = []
+            for j in i[1:-1].split(','):
+                data_mid.append(int(j))
+            data.append(data_mid)
+        return data
+
+    def dict_trans(self, data):  # 将原始的数据转换成字典，key为数据id，value为其值
+        dict = {}
+        for i in data:
+            dict[i[0]] = i[1:]
+        return dict
+
+    def dict_cross(self, data):
+        dict = {}  # key=id，value=index
+        for i in range(len(data)):
+            dict[data[i][0]] = i
+        return dict
+
+    def main(self):
+        road = self.read_txt(self.path_road)  # 不需要，转成字典
+        cross = self.read_txt(self.path_cross)  # 需要额外转换一个字典（key=id，value=index）
+        car = self.read_txt(self.path_car)  # 不需要，转成字典
+        road = self.dict_trans(road)
+        cross_dict = self.dict_cross(cross)
+        return road, cross, cross_dict, car
+
+
+def main():  # 主程序
+    if len(sys.argv) != 5:
+        logging.info('please input args: car_path, road_path, cross_path, answerPath')
+        exit(1)
+
+    car_path = sys.argv[1]
+    road_path = sys.argv[2]
+    cross_path = sys.argv[3]
+    answer_path = sys.argv[4]
+
+    logging.info("car_path is %s" % (car_path))
+    logging.info("road_path is %s" % (road_path))
+    logging.info("cross_path is %s" % (cross_path))
+    logging.info("answer_path is %s" % (answer_path))
+
+    # to read input file
+    dip = data_input(road_path, cross_path, car_path)
+    road, cross, dict_cross, car = dip.main()    # 应该可以运行出结果
+
+    # to write output file
     answer_data = []
     for the_car in car:
         graph = graph_tuning(road, dict_cross, len(cross), the_car)
@@ -93,35 +152,7 @@ def main(road, cross, dict_cross, car):
         answer_data.append(path)
         # print('车辆编号%s的最优路径是：'%(the_car[0]),path)
 
-    write_txt(answer_data, 'answer.txt')
-    # return answer_data
-
-
+    write_txt(answer_data, answer_path)
 
 if __name__ == "__main__":
-    time_start = time.time()
-    road, cross, dict_cross, car = data_input.default()
-    answer_data = main(road, cross, dict_cross, car)
-
-    time_end = time.time()
-    print('time cost', time_end - time_start, 's')
-
-    # print(road)
-    # print(cross)
-    # graph = graph_tuning(road, dict_cross, len(cross), car[0])  # 运行正常
-    # print(graph)
-
-    # cross_name = list(range(1, len(cross) + 1))
-    # print(cross_name)
-
-    # d0, d1 = dijkstra_search(graph, cross_name, car[0][1])  # d0 包含消耗的时间和上一个节点
-    # print(d0)
-    # print(d1)
-
-    # path = dijstra_path(road, cross, d1, car[0][2])
-    # print('最优路线为：', path)
-
-    # print(road)             # [5000, 15, 6, 2, 1, 2, 1]
-    # print(cross)          # [1, 5000, 5007, -1, -1]
-    # print(dict_cross)     # 1: 0
-    # print(car)            # [10000, 18, 50, 8, 3]
+    main()
