@@ -1,4 +1,4 @@
-<div align=center>**华为2019年软件精英挑战赛**</div>
+<div align=center><strong>华为2019年软件精英挑战赛</strong></div>
 
 
 <div align=center><img src ="https://github.com/Mufasa007/Huawei_2019_Code_Craft/blob/master/source/face.JPG"/></div>
