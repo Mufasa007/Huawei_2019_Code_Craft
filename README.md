@@ -2,8 +2,9 @@
 
 ![image](https://github.com/Mufasa007/Huawei_2019_Code_Craft/blob/master/source/face.JPG)  
 
- <div align="center">![image](https://github.com/Mufasa007/Huawei_2019_Code_Craft/blob/master/source/face.JPG)
-条件随机场模型示意图 </div>
+<div style="align: center">
+<img src="https://github.com/Mufasa007/Huawei_2019_Code_Craft/blob/master/source/face.JPG"/>
+</div>
 
 
 团队名称：按下去1个bug起来三个  
