@@ -1,6 +1,9 @@
-# 自建优先队列
-# data是一个有序数组，d0是一个需要插入的数值
-def priority_queue(data, d0):   # 二分查找法的优先队列建立
+# 2019.03.25    Mufasa
+# version2.0    使用二分查找插入，时间复杂度O(1*logn) 空间复杂度O（1）
+# 相较于之前的从头开始遍历进行插入效果更好，之前的时间复杂度O(n),空间复杂度O（1）
+
+
+def priority_queue(data, d0):  # 二分查找法的优先队列建立
     if d0 < data[0]:
         data.insert(0, d0)
         return data
@@ -27,6 +30,6 @@ def priority_queue(data, d0):   # 二分查找法的优先队列建立
 if __name__ == "__main__":
     data = [1, 2, 3, 6, 6, 7]
     # d0 = 4
-    d0 = 5
+    d0 = 2
     d1 = priority_queue(data, d0)
     print(d1)
