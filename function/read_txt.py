@@ -2,9 +2,9 @@
 # version2.0    增强程序鲁棒性
 import os
 
-
 def read_txt(path):  # 读取txt文件，返回二维数组
     os.chdir(os.getcwd())  # 设置相对路径
+    # TODO 后期修改成使用pandas读写txt文件加快程序运行速度
     f = open(path)
     txt = f.read().split('\n')  # 自带分行符
     data = []
