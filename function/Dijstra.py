@@ -12,8 +12,10 @@ def priority_queue(data, d0):  # 自建优先队列格式
     return data
 
 
-def dijkstra_search(graph, from_index, to_index):
-    data_index = list(range(len(graph)))
+def dijkstra_search(graph, from_index, to_index,data_index=None):
+    ## data_index 可以存储节点的名称输出路径也输出节点的名称
+    if data_index is None:data_index = list(range(len(graph)))
+
     parent = {}  # 字典映射，更新前级节点
     queue = []  # 优先队列
     queue_out = [[data_index[from_index], graph[from_index][from_index], 0]]  # 输出队列
