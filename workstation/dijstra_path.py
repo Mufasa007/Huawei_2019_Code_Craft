@@ -158,7 +158,8 @@ if __name__ == '__main__':
         graph = dijstra_path.graph_tuning(road, cross_line, the_car)
         queue_out, parent = dijstra_path.dijkstra_search(graph, cross_line, the_car[1])
         path = dijstra_path.road_path(the_car[1], the_car[2], parent)
-        path.insert(0,the_car[0])
+        path.insert(0, the_car[4])
+        path.insert(0, the_car[0])
         path_all.append(path)
 
     # **** 数据写入answer.txt文件 **** #
