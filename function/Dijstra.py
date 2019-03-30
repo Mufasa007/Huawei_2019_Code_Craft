@@ -10,6 +10,31 @@ def priority_queue(data, d0):  # 自建优先队列格式
     if state:
         data.append(d0)
     return data
+    
+    
+# def priority_queue(data, d0):  # 二分查找法的优先队列建立
+    # print(data,d0)
+    # if d0[1] < data[0][1]:
+        # data.insert(0, d0)
+        # return data
+    # elif d0[1] > data[-1][1]:
+        # data.append(d0)
+        # return data
+
+    # low = 0
+    # high = len(data) - 1
+    # while (high - low) > 1:
+        # mid = low + int((high - low) / 2)
+        # print(low, high)
+        # if data[mid][1] == d0[1]:
+            # data.insert(mid, d0)
+            # return data
+        # elif data[mid][1] < d0[1]:
+            # low = mid
+        # elif data[mid][1] > d0[1]:
+            # high = mid
+    # data.insert(mid, d0)
+    # return data
 
 
 def dijkstra_search(graph, from_index, to_index,data_index=None):
@@ -26,8 +51,7 @@ def dijkstra_search(graph, from_index, to_index,data_index=None):
         for i in range(len(data_index)):  # 遍历所有的可能性
             if graph[root_node][i] != -1:  # 检查是否可直连，是
                 if data_index[i] not in [x[0] for x in queue_out]:
-                    queue = priority_queue(queue,
-                                           [data_index[i], graph[root_node][i] + queue_out[-1][1], queue_out[-1][0]])
+                    queue = priority_queue(queue,[data_index[i], graph[root_node][i] + queue_out[-1][1], queue_out[-1][0]])
         # print(queue)    # 检查优先队列的情况 [['C', 1], ['B', 5]]
 
         for i in range(len(queue)):  # 0,1

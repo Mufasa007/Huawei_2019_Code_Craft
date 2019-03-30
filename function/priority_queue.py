@@ -29,7 +29,12 @@ def priority_queue(data, d0):  # 二分查找法的优先队列建立
 
 if __name__ == "__main__":
     data = [1, 2, 3, 6, 6, 7]
+    d0 = -1
+    # d0 = 0
+    # d0 = 1
+    # d0 = 3
     # d0 = 4
-    d0 = 2
+    # d0 = 6
+    # d0 = 8
     d1 = priority_queue(data, d0)
     print(d1)
